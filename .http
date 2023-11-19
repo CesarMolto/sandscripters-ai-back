@@ -5,3 +5,10 @@ content-type: application/json
     "name": "sample",
     "time": "Wed, 21 Oct 2015 18:27:50 GMT"
 }
+
+POST https://sandscripters-ai-back-b060b2039167.herokuapp.com/generate-prompt HTTP/1.1
+content-type: application/json
+
+{
+    "page": "home",
+}

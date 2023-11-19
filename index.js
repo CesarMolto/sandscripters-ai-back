@@ -21,17 +21,20 @@ app.use(bodyParser.json());
 
 // Post - Generate extra keywords
 app.post("/generate-keywords", (req, res) => {
+  console.log("Generating keywords");
   // Create bing chat instance
   const api = new BingChat({ cookie: process.env.BING_COOKIE });
 
   // Retrieve request information
   const body = req.body;
   const theme = body.theme;
-  if (!theme) {
-    res.json({ error: "no theme specified" });
+  const userKeywords = body.userKeywords;
+  if (!theme || !userKeywords) {
+    res.json({ error: "no theme or userKeywords specified" });
     return;
   }
-  const keywords = "nature, forest, river, sunset"; // body.keywords;
+  const keywords = userKeywords; // body.keywords;
+  console.log("userKeywords", userKeywords);
   const style = "realistic"; // body.style;
   // const colors = "red, blue"; // body.colors;
   //   console.log("body", body);
